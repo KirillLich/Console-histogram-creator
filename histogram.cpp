@@ -1,11 +1,12 @@
 #include <iostream>
 #include <string>
-#include "Base structs\IDIctionary.h"
-#include "HistogramAlgo.h"
+#include "Base structs\Dictionary.h"
+#include "Algorithms\HistogramAlgo.h"
+#include "Base structs\Histogram.h"
 #include <utility>
 #include <fstream>
 #include <regex>
-#include "Tests.h"
+#include "Tests\Tests.h"
 #include "UI\UI.h"
 
 std::vector<Person> CsvReader()
@@ -15,7 +16,6 @@ std::vector<Person> CsvReader()
 
 	std::vector<Person> out;
 	std::string helpingString;
-	char c;
 	std::getline(fout, helpingString);
 
 	while (!fout.eof())
@@ -36,29 +36,32 @@ std::vector<Person> CsvReader()
 		iter++;
 		age = std::stoi(iter->str());
 		iter++;
-		GPA = std::stod(iter->str());
+		GPA = std::stof(iter->str());
 		iter++;
 		PE = std::stoi(iter->str());
-		if (name == "Жанна") 
-			std::cout << "";
+
 		out.push_back(Person(age, course, GPA, PE, name));
 		if (fout.peek() == '\n')fout.get();
 	}
 	return out;
 }
+
+using TAttribute = std::size_t;
 //интерфейс дикшнри, сам интерфейс, класс гистограмма, побольше тестов
 int main()
 {
 	std::vector<Person> people = CsvReader();
 
-	Range<float> minMaxInterval(5, 10);
-	std::size_t partitionQuantity = 5;  
+	Range<TAttribute> minMaxInterval(17,23);
+	std::size_t partitionQuantity = 6;  
 
-	IDictionary<Range<float>, std::vector<Person>> histogram = CreateHistogram(people, partitionQuantity, minMaxInterval, &(Person::GetGPA));
+	Histogram<Person, TAttribute> histogram(people, minMaxInterval, partitionQuantity, &(Person::GetAge));
 
-	VisualizeHistogram(histogram, partitionQuantity, minMaxInterval);
+	VisualizeHistogram(histogram);
+	/*Dictionary<Range<float>, std::vector<Person>> histogram = CreateHistogram(people, partitionQuantity, minMaxInterval, &(Person::GetGPA));
 
-
+	VisualizeHistogram(histogram, partitionQuantity, minMaxInterval);*/
+	
 	/*IDictionaryTests tester;
 	tester.RunTests();*/
 

@@ -1,17 +1,17 @@
 #ifndef UI_H
 #define UI_H
 
-#include "..\HistogramAlgo.h"
-#include "..\Base structs\IDIctionary.h"
+#include "..\Algorithms\HistogramAlgo.h"
+#include "..\Base structs\Dictionary.h"
 #include <iostream>
-#include "..\Person.h"
+#include "..\Base structs\Person.h"
 
 class UserInterface
 {
 	template<typename T>
 	T TakeItem(std::string errorMessage) 
 	{
-		T out;
+		T out = 0;
 		std::cin >> out;
 		if (!std::cin.good() || (std::cin.peek() != '\n'))
 		{

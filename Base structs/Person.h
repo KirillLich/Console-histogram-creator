@@ -5,7 +5,7 @@ class Person
 private:
 	std::size_t age;
 	std::size_t course;
-	std::size_t GPA;
+	float GPA;
 	std::size_t PEAttestation;
 	std::string name;
 public:

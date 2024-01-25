@@ -143,11 +143,13 @@
     <ClCompile Include="UI\UI.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Algorithms\HistogramAlgo.h" />
+    <ClInclude Include="Base structs\Dictionary.h" />
     <ClInclude Include="Base structs\HashTable.h" />
-    <ClInclude Include="Base structs\IDIctionary.h" />
-    <ClInclude Include="HistogramAlgo.h" />
-    <ClInclude Include="Person.h" />
-    <ClInclude Include="Tests.h" />
+    <ClInclude Include="Base structs\Histogram.h" />
+    <ClInclude Include="Base structs\IDictionary.h" />
+    <ClInclude Include="Base structs\Person.h" />
+    <ClInclude Include="Tests\Tests.h" />
     <ClInclude Include="UI\UI.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

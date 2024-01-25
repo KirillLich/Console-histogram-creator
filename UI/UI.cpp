@@ -1,5 +1,5 @@
 #include "UI.h"
-#include "..\Tests.h"
+#include "..\Tests\Tests.h"
 #include <string>
 #include <fstream>
 #include <regex>
